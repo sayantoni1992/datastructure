@@ -1,0 +1,143 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="output"></div>
+
+    <script>
+        document.getElementById('output').innerHTML = "Linked List" + "<br>";
+
+        function LinkedList() {
+
+            console.log("Inside Constructor");
+            let count = 0;
+            let head = null;
+
+            this.GetCount = function() {
+                console.log("Inside Get Count");
+                return count;
+            }
+
+            this.DisplayAll = function(){
+                console.log("Inside Display All");
+                if(head === null) { return null;}
+                else {
+                    var arr = new Array();
+                    var current = head;
+
+                    for(let i= 0; i < count; i++) {
+                        arr[i] = current.data;
+                        current = current.next;
+
+                    }
+                    return arr;
+                }
+            }
+
+            this.AddFirst = function(data) {
+                console.log("Inside Add First");
+                let node = {
+                    data: data,
+                    next: head
+                };
+
+                head = node;
+                count++;
+
+            }
+
+            this.Add = function(data, index) {
+                console.log("Inside Only Add");
+
+                if(index === 0) {
+                    this.AddFirst(data);
+                }
+                else if(index > -1 && index <= count) {
+                    console.log("Inside the count range");
+                    var node = {
+                    data: data,
+                    next: null
+                };
+                let previous;
+                let current = head;
+
+                let i= 0;
+
+                while(i++ < index) {
+                    previous = current;
+                    current = current.next;
+                }
+
+                previous.next = node;
+                node.next = current;
+
+                count++;
+                }
+
+                else {
+                    alert("Error. Index outside Range");
+                }
+            }
+
+            this.RemoveFirst = function() {
+                if(head === null) {
+                    return null;
+                }
+                else {
+                    head = head.next;
+                    count--;
+                }
+            }
+
+            this.RemoveAt = function(index) {
+                if(head === null || (index < 0 && index > count)) {
+                    return null;
+                }
+                else {
+                    let current = head;
+                    let previous;
+                    let i= 0;
+
+                    while(i < index) {
+                        previous = current;
+                        current = current.next;
+                        i++;
+                    }
+
+                    previous.next = current.next;
+                    count--;
+                }
+            }
+
+            this.ClearList = function() {
+                head = null;
+                count = 0;
+            }
+
+        }
+
+        var minlista = new LinkedList();
+            minlista.Add("Först Element",0);
+            minlista.Add("Andra Element",1);
+            minlista.Add("Tredje Element",2);
+            minlista.Add("Added Element",1);
+            minlista.AddFirst("New First Element");
+            document.getElementById('output').innerHTML += "MinLista : " + minlista.DisplayAll() + "<br>";
+            minlista.RemoveAt(2);
+            //minlista.RemoveFirst();
+            document.getElementById('output').innerHTML += "MinLista : " + minlista.DisplayAll() + "<br>";
+
+            minlista.ClearList();
+            document.getElementById('output').innerHTML += "MinLista : " + minlista.DisplayAll() + "<br>";
+   
+            
+            
+            document.getElementById('output').innerHTML += "MinLista : " + minlista.DisplayAll() + "<br>";
+
+    </script>
+    
+</body>
+</html>

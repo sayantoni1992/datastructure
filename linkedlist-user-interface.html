@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedList User Interface</title>
+    <script src="link-list.js" defer></script>
+
+</head>
+<body>
+
+    <h1>The LinkedList Implementation</h1>
+
+    <div class="user-interface">
+        <div class="input">
+            <input type="text" id="to-add-value" placeholder="Add new items here">
+            <input type="text" id="to-add-position" placeholder="What position to add on">
+            <button id="add-btn" onclick="to_add()">Add</button>
+            <input type="text" id="to-remove-position" placeholder="What position to remove item from">
+            <button id="remove-btn" onclick="to_remove()">Remove</button>
+            <button id="display-btn" onclick="to_display()">Display</button>
+        </div>
+
+
+        <div id="output">
+            <!--<h2>The LinkedList Output</h2>-->
+            <ol id="output-list"></ol>
+        </div>
+    </div>
+
+    
+</body>
+</html>
